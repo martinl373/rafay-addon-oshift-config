@@ -1,0 +1,1 @@
+# rafay-addon-oshift-config
