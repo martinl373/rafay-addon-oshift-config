@@ -4,5 +4,4 @@ metadata:
   name: marker-configmap
 data:
   marker-configmap: |
-    PhantomData: "v2 of marker"
-
+    PhantomData: "v3 of marker"
