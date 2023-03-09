@@ -11,3 +11,5 @@ spec:
   registrySources:
     blockedRegistries:
       - "docker.io"
+  additionalTrustedCA:
+    name: registry-certs
