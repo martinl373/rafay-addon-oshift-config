@@ -6,7 +6,7 @@ metadata:
   name: marker-configmap
 data:
   marker-configmap: |
-    PhantomData: "This is a marker config only"
+    PhantomData: "v2 of marker"
 ---
 # Source: oshift-config/templates/image-fetch-config.yaml
 apiVersion: config.openshift.io/v1
