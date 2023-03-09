@@ -1,0 +1,5 @@
+apiVersion: v2
+name: oshift-config
+description: Test config some internal OpenShift stuff
+type: application
+version: 0.1.0
