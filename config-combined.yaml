@@ -6,22 +6,23 @@ metadata:
   name: marker-configmap
 data:
   marker-configmap: |
-    PhantomData: "v3 of marker"
+    PhantomData: "v6 of marker"
 ---
 # Source: oshift-config/templates/image-fetch-config.yaml
 apiVersion: config.openshift.io/v1
 kind: Image
 metadata:
   name: cluster
-  namespace: ""
   annotations:
     include.release.openshift.io/ibm-cloud-managed: "true"
     include.release.openshift.io/self-managed-high-availability: "true"
     include.release.openshift.io/single-node-developer: "true"
-    release.openshift.io/create-only: "true"
+    # release.openshift.io/create-only: "true"
 spec:
   registrySources:
     blockedRegistries:
       - "docker.io"
+      - "wally.io"
+      - "wonky.io"
   additionalTrustedCA:
     name: registry-certs
