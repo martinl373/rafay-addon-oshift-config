@@ -12,6 +12,5 @@ spec:
     blockedRegistries:
       - "docker.io"
       - "wally.io"
-      - "wonky.io"
   additionalTrustedCA:
     name: registry-certs
