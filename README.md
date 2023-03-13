@@ -20,7 +20,7 @@ done
 This should fail with Helm complaining that it does not own the files.
 
 ```bash
-helm update --debug --install test-release test-chart/
+helm upgrade --install test-release test-chart/
 ```
 
 ## 4. Ready all resources for Helm adoption
@@ -41,5 +41,27 @@ will just be silently not changed. This can be run over and over. And helm will 
 anything until the files in the helm chart changes AFTER the initial adoption.
 
 ```bash
-helm update --debug --install test-release test-chart/
+helm upgrade --install test-release test-chart/
 ```
+
+Looking at the output from Helm in debug mode (Adding the `--debug` flag) one can see that helm actually thinks that these files are not different (in cluster vs chart)
+
+```
+client.go:396: [debug] checking 6 resources for changes
+client.go:684: [debug] Patch ConfigMap "test-configmap" in namespace default
+client.go:684: [debug] Patch ClusterRole "test-clusterrole" in namespace
+client.go:684: [debug] Patch Role "test-role" in namespace default
+client.go:675: [debug] Looks like there are no changes for ClusterPolicy "test-clusterpolicy"
+client.go:675: [debug] Looks like there are no changes for Image "cluster"
+client.go:675: [debug] Looks like there are no changes for Policy "test-policy"
+```
+
+## Results
+| Resource Type | Changed? |
+|---|---|
+| image.config.openshift.io | false |
+| clusterpolicy.kyverno.io  | false |
+| policy.kyverno.io         | false |
+| clusterrole.rbac.authorization.k8s.io | true |
+| role.rbac.authorization.k8s.io | true |
+| configmap | true |
